@@ -50,8 +50,7 @@ db.once("open", function () {
 });
 
 // Requiring our models for syncing
-var db = require("./server/models");
-var initValues = require("./server/data/initialData.js");
+var initValues = require("./server/data/initDataController.js");
 
 // Import routes and give the server access to them.
 require("./server/routes/api-routes-insert.js")(app);
@@ -67,6 +66,6 @@ var initValues = require("./server/data/initDataController.js");
  * Listen on provided port, on all network interfaces.
  */
 server.listen(port, () => {
-    initValues();
+    // initValues();
     console.log("App listening on PORT: " + port);
 });

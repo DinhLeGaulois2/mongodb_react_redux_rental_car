@@ -1,8 +1,8 @@
 var Address = require('../models/address.js');
 var Branch = require('../models/branch.js');
-var BranchAddress = require('../models/branchAddress.js');
+var Branch_addr = require('../models/branch_addr.js');
 var Customer = require('../models/customer.js');
-var CustomerAddress = require('../models/customerAddress.js');
+var Customer_addr = require('../models/customer_addr.js');
 var Rental = require('../models/rental.js');
 var Vehicle = require('../models/vehicle.js');
 
@@ -22,9 +22,9 @@ module.exports = function (app) {
         Branch.find({ _id: req.params.id }).then(data => {
             if (data.length > 0) {
                 result.branch = data
-                BranchAddress.find({ branchId: data._id }).then(data => {
+                Branch_addr.find({ branchId: data._id }).then(data => {
                     if (data.length == 0)
-                        res.status(400).json({ msg: "BranchAddress Not Found" })
+                        res.status(400).json({ msg: "Branch_addr Not Found" })
                     else {
                         Address.find({ _id: data.addressId }).then(data => {
                             if (data.length > 0) {
@@ -45,9 +45,9 @@ module.exports = function (app) {
         Customer.find({ _id: req.params.id }).then(data => {
             if (data.length > 0) {
                 result.customer = data
-                customerAddress.find({ customerId: data._id }).then(data => {
+                customer_addr.find({ customerId: data._id }).then(data => {
                     if (data.length == 0)
-                        res.status(400).json({ msg: "BranchAddress Not Found" })
+                        res.status(400).json({ msg: "Branch_addr Not Found" })
                     else {
                         Address.find({ _id: data.addressId }).then(data => {
                             if (data.length > 0) {
@@ -70,7 +70,7 @@ module.exports = function (app) {
                 result.rental = data
                 Vehicle.find({ _id: data.vehiculeId }).then(data => {
                     if (data.length == 0)
-                        res.status(400).json({ msg: "BranchAddress Not Found" })
+                        res.status(400).json({ msg: "Branch_addr Not Found" })
                     else {
                         Branch.find({ _id: data.branchId }).then(data => {
                             if (data.length > 0) {

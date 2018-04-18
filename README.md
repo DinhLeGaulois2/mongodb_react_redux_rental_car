@@ -14,7 +14,7 @@ This time, a vehicle is linked to its builder branch.
 
 ![alt text](assets/img/car_rental_v2.jpg)
 ---
-# BUILDING: EMPTY FOR NOW ...
+# BUILDING: API is DONE, Need to ADD UI ...
 
 ---------------
 

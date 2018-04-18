@@ -1,10 +1,12 @@
-var Address = require('../data/address.js');
-var Branch = require('../data/branch.js');
-var BranchAddress = require('../data/branchAddress.js');
-var Customer = require('../data/customer.js');
-var CustomerAddress = require('../data/customerAddress.js');
-var Rental = require('../data/rental.js');
-var Vehicle = require('../data/vehicle.js');
+var Address = require('../models/address.js');
+var Branch = require('../models/branch.js');
+var BranchAddress = require('../models/branchAddress.js');
+var Customer = require('../models/customer.js');
+var CustomerAddress = require('../models/customerAddress.js');
+var Rental = require('../models/rental.js');
+var Vehicle = require('../models/vehicle.js');
+
+var cus_data = require('../data/customers')
 
 module.exports = function (app) {
     app.post("/api/add/vehicle", (req, res, next) => {
@@ -20,6 +22,15 @@ module.exports = function (app) {
             res.status(200).json({ msg: "Insertion: Success!" })
         })
     })
+
+    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+    app.post("/api/add/customers", (req, res, next) => {
+        Customer.insertMany(cus_data, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json(db)
+        })
+    })
+
 
     app.post("/api/add/branch", (req, res, next) => {
         Branch.find({ branchName: req.body.branch.branchName }, (err, db) => {

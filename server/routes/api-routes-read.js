@@ -1,12 +1,17 @@
-var Address = require('../data/address.js');
-var Branch = require('../data/branch.js');
-var BranchAddress = require('../data/branchAddress.js');
-var Customer = require('../data/customer.js');
-var CustomerAddress = require('../data/customerAddress.js');
-var Rental = require('../data/rental.js');
-var Vehicle = require('../data/vehicle.js');
+var Address = require('../models/address.js');
+var Branch = require('../models/branch.js');
+var BranchAddress = require('../models/branchAddress.js');
+var Customer = require('../models/customer.js');
+var CustomerAddress = require('../models/customerAddress.js');
+var Rental = require('../models/rental.js');
+var Vehicle = require('../models/vehicle.js');
 
 module.exports = function (app) {
+    app.get("/api/get/customers", (req, res, next) => {
+        Customer.find().then(data => res.status(200).json(data))
+        .catch(next)
+    })
+
     app.get("/api/get/vehicle/:id", (req, res, next) => {
         Vehicle.find({ _id: req.params.id }).then(data => res.status(200).json(data))
             .catch(next)

@@ -4,9 +4,8 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var customerSchema = new Schema({
-    last_name: { type: String },
-    first_name: { type: String },
-    middle_name: { type: String }
+    lName: { type: String },
+    fName: { type: String },
 });
 
 var Customer = mongoose.model("Customer", customerSchema);

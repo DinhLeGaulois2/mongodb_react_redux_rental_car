@@ -3,17 +3,17 @@ var mongoose = require("mongoose");
 // Create Schema class
 var Schema = mongoose.Schema;
 
-var branchAddressSchema = new Schema({
+var branch_addrSchema = new Schema({
     branchId: {
         type: Schema.Types.ObjectId,
         ref: "Branch"
     },
-    addressId: {
+    addrId: {
         type: Schema.Types.ObjectId,
         ref: "Address"
     }
 });
 
-var BranchAddress = mongoose.model("BranchAddress", branchAddressSchema);
+var Branch_addr = mongoose.model("Branch_addr", branch_addrSchema);
 
-module.exports = BranchAddress;
+module.exports = Branch_addr;

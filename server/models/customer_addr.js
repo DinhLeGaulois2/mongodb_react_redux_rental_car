@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 // Create Schema class
 var Schema = mongoose.Schema;
 
-var customerAddressSchema = new Schema({
+var customer_addrSchema = new Schema({
     customerId: {
         type: Schema.Types.ObjectId,
         ref: "Customer"
@@ -14,6 +14,6 @@ var customerAddressSchema = new Schema({
     }
 });
 
-var CustomerAddress = mongoose.model("CustomerAddress", customerAddressSchema);
+var Customer_addr = mongoose.model("Customer_addr", customer_addrSchema);
 
-module.exports = CustomerAddress;
+module.exports = Customer_addr;

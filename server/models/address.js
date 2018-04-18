@@ -4,8 +4,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var addressSchema = new Schema({
-    street_address_1: { type: String },
-    street_address_2: { type: String },
+    streetAddr: { type: String },
     city: { type: String },
     state: { type: String },
     zip: { type: Number }

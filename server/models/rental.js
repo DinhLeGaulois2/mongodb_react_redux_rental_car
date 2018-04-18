@@ -6,10 +6,6 @@ var Schema = mongoose.Schema;
 var rentalSchema = new Schema({
     pickup_data: { type: Date },
     dropoff_data: { type: Date },
-    branchId: {
-        type: Schema.Types.ObjectId,
-        ref: "Branch"
-    },
     customerId: {
         type: Schema.Types.ObjectId,
         ref: "Customer"

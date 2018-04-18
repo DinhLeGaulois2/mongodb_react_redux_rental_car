@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var branchSchema = new Schema({
-    branch_name: { type: String }
+    name: { type: String }
 });
 
 var Branch = mongoose.model("Branch", branchSchema);

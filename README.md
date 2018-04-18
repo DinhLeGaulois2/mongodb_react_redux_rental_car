@@ -8,6 +8,12 @@ Building a project based on an EER (Enhanced Entity-Relationship).
 ![alt text](assets/img/car_rental.jpg)
 
 ---
+
+### We need to keep the original version above. Let try another version 
+This time, a vehicle is linked to its builder branch.
+
+![alt text](assets/img/car_rental_v2.jpg)
+---
 # BUILDING: EMPTY FOR NOW ...
 
 ---------------

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-let TestComponent = ({ doRequest }) => 
+let TestComponent = ({ data, doRequest }) =>
     <div>
         <button type="button" onClick={e => {
             e.preventDefault()
@@ -9,7 +9,8 @@ let TestComponent = ({ doRequest }) =>
         }}>Make Request</button>
     </div>
 
-TestComponent.propTypes = {
+TestComponent.PropTypes = {
+    data: PropTypes.string, // <<<<<<<<<<<<<<<<<<<<<< NEED TO BE CHANGED ...
     doRequest: PropTypes.func.isRequired
 }
 

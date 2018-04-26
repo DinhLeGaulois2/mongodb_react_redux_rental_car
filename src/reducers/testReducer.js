@@ -1,7 +1,7 @@
 import cst from '../constants/testConstant'
 
 const testReducer = (state = {
-    data: "department1"
+    data: {}
 }, action) => {
     switch (action.type) {
         case cst.TEST_RESULT: {

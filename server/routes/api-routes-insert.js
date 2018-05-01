@@ -1,3 +1,5 @@
+var objectId = require('mongodb').ObjectId
+
 var Address = require('../models/address.js');
 var Branch = require('../models/branch.js');
 var Branch_addr = require('../models/branch_addr.js');
@@ -40,7 +42,7 @@ module.exports = function (app) {
                     if (err) throw next(err)
                     Address.insertOne(req.body.address, (err, data) => {
                         if (err) throw next(err)
-                        Branch_addr.insertOne({ addressId: data._id, branchId: db._id }, (err, data) => {
+                        Branch_addr.insertOne({ addressId: objectId(data._id), branchId: objectId(db._id) }, (err, data) => {
                             res.status(200).json({ msg: "Insertion: Success!" })
                         })
                     })
@@ -62,10 +64,10 @@ module.exports = function (app) {
                     Address.find(add, (err, data) => {
                         if (data.length == 0) {
                             Address.insertOne(cus, (err, data) => {
-                                Customer_addr.find({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                                Customer_addr.find({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                     if (err) throw next(err)
                                     if (data.length == 0) {
-                                        Customer_addr.insertOne({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                                        Customer_addr.insertOne({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                             if (err) throw next(err)
                                             res.status(200).json("Insertion: Success!")
                                         })
@@ -75,9 +77,9 @@ module.exports = function (app) {
                             })
                         }
                         else {
-                            customer_addr.find({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                            customer_addr.find({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                 if (data.length == 0) {
-                                    Customer_addr.insertOne({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                                    Customer_addr.insertOne({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                         if (err) throw next(err)
                                         res.status(200).json("Insertion: Success!")
                                     })
@@ -92,10 +94,10 @@ module.exports = function (app) {
                 Address.find(add, (err, data) => {
                     if (data.length == 0) {
                         Address.insertOne(cus, (err, data) => {
-                            Customer_addr.find({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                            Customer_addr.find({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                 if (err) throw next(err)
                                 if (data.length == 0) {
-                                    Customer_addr.insertOne({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                                    Customer_addr.insertOne({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                         if (err) throw next(err)
                                         res.status(200).json("Insertion: Success!")
                                     })
@@ -105,9 +107,9 @@ module.exports = function (app) {
                         })
                     }
                     else {
-                        customer_addr.find({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                        customer_addr.find({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                             if (data.length == 0) {
-                                Customer_addr.insertOne({ custumerId: db._id, addressId: data._id }, (err, data) => {
+                                Customer_addr.insertOne({ custumerId: objectId(db._id), addressId: objectId(data._id) }, (err, data) => {
                                     if (err) throw next(err)
                                     res.status(200).json("Insertion: Success!")
                                 })

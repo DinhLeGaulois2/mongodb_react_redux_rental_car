@@ -1,3 +1,5 @@
+var objectId = require('mongodb').ObjectId
+
 var Address = require('../models/address.js');
 var Branch = require('../models/branch.js');
 var Branch_addr = require('../models/branch_addr.js');
@@ -13,20 +15,20 @@ module.exports = function (app) {
     })
 
     app.get("/api/get/vehicle/:id", (req, res, next) => {
-        Vehicle.find({ _id: req.params.id }).then(data => res.status(200).json(data))
+        Vehicle.find({ _id: objectId(req.params.id) }).then(data => res.status(200).json(data))
             .catch(next)
     })
 
     app.get("/api/get/branch/:id", (req, res, next) => {
         let result = {}
-        Branch.find({ _id: req.params.id }).then(data => {
+        Branch.find({ _id: objectId(req.params.id) }).then(data => {
             if (data.length > 0) {
                 result.branch = data
-                Branch_addr.find({ branchId: data._id }).then(data => {
+                Branch_addr.find({ branchId: objectId(data._id) }).then(data => {
                     if (data.length == 0)
                         res.status(400).json({ msg: "Branch_addr Not Found" })
                     else {
-                        Address.find({ _id: data.addressId }).then(data => {
+                        Address.find({ _id: objectId(data.addressId) }).then(data => {
                             if (data.length > 0) {
                                 result.address = data
                                 res.status(200).json(result)
@@ -42,14 +44,14 @@ module.exports = function (app) {
 
     app.get("/api/get/customer/:id", (req, res, next) => {
         let result = {}
-        Customer.find({ _id: req.params.id }).then(data => {
+        Customer.find({ _id: objectId(req.params.id) }).then(data => {
             if (data.length > 0) {
                 result.customer = data
-                customer_addr.find({ customerId: data._id }).then(data => {
+                customer_addr.find({ customerId: objectId(data._id) }).then(data => {
                     if (data.length == 0)
                         res.status(400).json({ msg: "Branch_addr Not Found" })
                     else {
-                        Address.find({ _id: data.addressId }).then(data => {
+                        Address.find({ _id: objectId(data.addressId) }).then(data => {
                             if (data.length > 0) {
                                 result.address = data
                                 res.status(200).json(result)
@@ -65,7 +67,7 @@ module.exports = function (app) {
 
     app.get("/api/get/rental/:id", (req, res, next) => {
         let result = {}
-        Rental.find({ _id: req.params.id }).then(data => {
+        Rental.find({ _id: objectId(req.params.id) }).then(data => {
             if (data.length > 0) {
                 result.rental = data
                 Vehicle.find({ _id: data.vehiculeId }).then(data => {

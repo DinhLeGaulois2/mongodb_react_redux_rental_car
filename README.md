@@ -27,5 +27,4 @@ This time, a vehicle is linked to its builder branch.
 ---------------
 
 ## Author
-* Dinh HUYNH - All Rights Reserved!
-* dinh.hu19@yahoo.com
+* Dinh HUYNH
